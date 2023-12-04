@@ -1,0 +1,101 @@
+<main>
+  <form (ngSubmit)="onSubmit()" class="form" [formGroup]="formulario">
+    <div class="form-control">
+      <label> Nombre del cliente: </label>
+      <input
+        type="text"
+        placeholder="Nombre del cliente"
+        formControlName="nombreCliente"
+      />
+      <div
+        class="error-div"
+        *ngIf="
+          formulario.get('nombreCliente')?.hasError('required') &&
+          formulario.get('nombreCliente')?.touched
+        "
+      >
+        <span>*El nombre del cliente es obligatorio</span>
+      </div>
+      <div
+        class="error-div"
+        *ngIf="
+          formulario.get('nombreCliente')?.hasError('minlength') &&
+          formulario.get('nombreCliente')?.touched
+        "
+      >
+        <span>*El nombre debe contener mas de 2 caracteres</span>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="nombreProducto"> Nombre del producto: </label>
+
+      <input
+        placeholder="Nombre del producto"
+        formControlName="nombreProducto"
+        type="text"
+        id="nombreProducto"
+      />
+      <div
+        class="error-div"
+        *ngIf="
+          formulario.get('nombreProducto')?.hasError('required') &&
+          formulario.get('nombreProducto')?.touched
+        "
+      >
+        <span>*El nombre del producto es obligatorio</span>
+      </div>
+      <div
+        class="error-div"
+        *ngIf="
+          formulario.get('nombreProducto')?.hasError('minlength') &&
+          formulario.get('nombreProducto')?.touched
+        "
+      >
+        <span>*El nombre debe contener mas de 2 caracteres</span>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="precioProducto"> Precio del producto: </label>
+
+      <input
+        placeholder="Precio del producto"
+        formControlName="precioProducto"
+        type="number"
+        id="precioProducto"
+      />
+    </div>
+    <div class="form-control discount">
+      <div  class="form-control">
+        <label>Aplica descuento:</label>
+        <input
+          type="checkbox"
+          (change)="showDiscountDiv()"
+          formControlName="aplicaDescuento"
+        />
+      </div>
+      <div class="form-control">
+        <label>Porcentaje descuento (%):</label>
+        <input
+   
+          type="number"
+          formControlName="montoDescuento"
+          placeholder="Porcentaje descuento (%)"
+         
+        />
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="cantidadCuotas"> Cantidad cuotas: </label>
+
+      <input
+        placeholder="A cuantos pagos?"
+        formControlName="cantidadCuotas"
+        type="number"
+        id="cantidadCuotas"
+      />
+    </div>
+
+    <Button type="submit" class="create-btn">Crear</Button>
+  </form>
+</main>

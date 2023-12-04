@@ -1,0 +1,35 @@
+
+<ng-template #loading>
+<h1>Cargando...</h1>
+</ng-template>
+
+<main class="main-container" *ngIf="detalleVenta else loading">
+  <app-venta-card
+    *ngIf="detalleVenta != null"
+    class="card"
+    [Venta]="detalleVenta"
+  ></app-venta-card>
+ 
+  <button (click)="abrirPagoModal()" *ngIf="detalleVenta.estaPago != true">Recibir pago</button>
+
+  <div
+    [ngClass]="{
+      'show-pagar_modal': showModal == true,
+      'hide-pagar_modal': showModal == false
+    }"
+  >
+    <div class="payment-info">
+      <nav class="modal-nav">
+        <div class="modal-title">
+        <h2>Recibir pago</h2>
+      </div>
+        <button (click)="cerrarPagoModal()" class="close-btn"><img src="../../../../assets/icons/close-icon.png"/></button>
+      </nav>
+      <h2>Info</h2>
+
+      <input type="text" class="form-control" placeholder="Monto a recibir"  [(ngModel)]="montoARecibir"/>
+
+      <button  (click)="recibirPago(montoARecibir)">Pagar</button>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,66 @@
+<div class="ventas-table">
+
+  <div>
+    <input placeholder="Buscar pedido"/>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre producto</th>
+        <th>Tracking</th>
+        <th>Status</th>
+        <th>Total $USD</th>
+        <th>Tasa Dolar</th>
+        <th>Precio RD$</th>
+        <th>Total Courrier</th>
+        <th>Total RD$</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of pedidos" [class]="item.id.toString()">
+        <td>{{ item.id }}</td>
+        <td>{{ item.nombreProducto }}</td>
+        <td>
+          {{ item.numeroTracking }} /
+          <strong>{{ item.companiaTransportista }}</strong>
+        </td>
+        <td class="status__column">
+          <span
+            [ngClass]="{
+              recibido_miami: item.statusPedido === 'RECIBIDO EN MIAMI',
+              recibido: item.statusPedido === 'RECIBIDO',
+          pendiente: item.statusPedido === 'PENDIENTE',
+          disponibleCourrier: item.statusPedido === 'DISPONIBLE EN COURRIER',
+
+          
+            }"
+            >{{ item.statusPedido }}
+          </span>
+        </td>
+        <td>{{ item.totalProductoUSD | currency : "USD" }}</td>
+        <td>{{ item.tasaDolar | currency : "DOP" : "RD$" }}</td>
+        <td>{{ item.totalProductoRDs | currency : "DOP" : "RD$" }}</td>
+        <td>{{ item.totalCourrier | currency : "DOP" : "RD$" }}</td>
+        <td>{{ item.totalPedidoRDs | currency : "DOP" : "RD$" }}</td>
+
+        <td class="action-btns">
+          <button
+            class="see-status__btn"
+            (click)="ir(item.numeroTracking, item.companiaTransportista)"
+          >
+            Ver status
+          </button> |
+          <button
+            class="update-status__btn"
+            [routerLink]="['/pedidos', item.id, 'actualizarStatus']"
+          >
+            Actualizar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

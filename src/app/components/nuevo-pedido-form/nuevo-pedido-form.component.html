@@ -1,0 +1,165 @@
+<h2>  Agregar nuevo pedido</h2>
+<form [formGroup]="pedidoForm" class="form-container">
+
+  <div class="group-wrapper">
+    <label> Informacion del producto </label>
+    <section class="input-group">
+      <div class="form-control">
+        <label> Nombre producto </label>
+        <input
+          formControlName="nombreProducto"
+          placeholder="Nombre del producto"
+          class="form-control"
+        />
+        <div
+          class="error"
+          *ngIf="
+            pedidoForm.get('nombreProducto')?.hasError('required') &&
+            pedidoForm.get('nombreProducto')?.touched
+          "
+        >
+          <p style="color: red">El nombre del producto es requerido</p>
+        </div>
+      </div>
+      <div class="form-control">
+        <label> Cantidad producto </label>
+        <input
+          type="number"
+          formControlName="cantidadProducto"
+          placeholder="Cantidad del producto"
+        />
+      </div>
+      <div class="form-control">
+        <label>Tasa dolar</label>
+        <input
+          formControlName="tasaDolar"
+          type="number"
+          placeholder="Tasa dolar"
+        />
+      </div>
+      <div class="form-control">
+        <label> Total producto (USD$)</label>
+
+        <input
+          formControlName="totalProductoUSD"
+          type="number"
+          placeholder="Total producto USD$"
+        />
+      </div>
+    </section>
+  </div>
+  <div class="group-wrapper">
+    <label> Informacion de envio </label>
+    <section class="input-group">
+      <div class="form-control">
+        <label> Numero de tracking: </label>
+        <input
+          formControlName="numeroTracking"
+          placeholder="Numero de tracking"
+        />
+      </div>
+      <div class="form-control">
+        <label> Compania transportista: </label>
+        <input
+          formControlName="companiaTransportista"
+          placeholder="Compania transportista"
+        />
+      </div>
+      <div class="form-control">
+        <label>Status pedido</label>
+        <select formControlName="statusPedido">
+          <option disabled [defaultSelected]="true">
+            SELEC. STATUS PEDIDO
+          </option>
+          <option value="0">PENDIENTE</option>
+          <option value="4">RECIBIDO EN MIAMI</option>
+          <option value="1">RECIBIDO</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>Fecha de pedido</label>
+        <input formControlName="fechaPedido" type="date" />
+      </div>
+    </section>
+  </div>
+
+  <div class="group-wrapper">
+    <label>Tienda de compra</label>
+    <section class="input-group">
+      <div class="form-control">
+        <label>Pagina de compra</label
+        ><input
+          formControlName="paginaDeCompra"
+          placeholder="Pagina de compra"
+        />
+      </div>
+      <div class="form-control">
+        <label># Orden en pagina</label
+        ><input
+          formControlName="idCompraPagina"
+          placeholder="# Orden en pagina"
+        />
+      </div>
+    </section>
+  </div>
+
+  <div class="group-wrapper">
+    <label>Informacion de pago</label>
+
+    <section class="input-group">
+      <div class="form-control">
+        <label>Metodo de pago</label>
+        <select formControlName="metodoPago">
+          <option disabled [defaultSelected]="true">
+            SELECCIONE TIPO DE TARJETA
+          </option>
+          <option value="TARJETA DEBITO">
+            TARJETA <strong>DEBITO</strong>
+          </option>
+          <option value="TARJETA CREDITO">
+            TARJETA <strong>CREDITO</strong>
+          </option>
+       
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label> Banco utilizado </label>
+        <select formControlName="bancoUtilizado">
+          <option disabled [defaultSelected]="true">
+            SELECCIONE BANCO UTILIZADO
+          </option>
+          <option value="BHD">BHD</option>
+          <option value="POPULAR">POPULAR</option>
+          <option value="QIK">QIK</option>
+        </select>
+      </div>
+    </section>
+  </div>
+
+  <div class="group-wrapper">
+    <label>Informacion de courrier</label>
+
+    <section class="input-group">
+      <div class="form-control">
+        <label>Courrier usado</label>
+        <input
+          formControlName="courrierUsado"
+          type="text"
+          placeholder="Courrier usado"
+        />
+      </div>
+      <div class="form-control">
+        <label> Total Courrier (RD$) </label>
+        <input
+          formControlName="totalCourrier"
+          type="number"
+          placeholder="Total courrier RD$"
+        />
+      </div>
+    </section>
+  </div>
+  <button class="agregarPedidoBtn" (click)="show()">
+    Agregar nuevo pedido
+  </button>
+</form>

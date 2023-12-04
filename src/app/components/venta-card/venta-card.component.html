@@ -1,0 +1,61 @@
+<div class="card-container">
+  <header class="header-banner">
+    <h2 [ngClass]="'paid-banner'" *ngIf="Venta.estaPago == true">
+      Esta orden ha sido pagada
+    </h2>
+  </header>
+
+  <section class="orderInfo">
+    <h2>Informacion de la orden</h2>
+    <span>Venta #: {{ Venta.idVenta }}</span>
+    <span>Fecha: {{ Venta.fechaDeVenta | date : "dd/MM/yyyy" }}</span>
+    <span>Cliente: {{ Venta.nombreCliente }}</span>
+  </section>
+
+  <section class="orderBill">
+    <h2 style="font-style: oblique; font-family: Arial, Helvetica, sans-serif">
+      Bill
+    </h2>
+    <div class="detalle-pagos">
+      <div>
+        <strong>Producto vendido: </strong>
+        {{ Venta.nombreProductoVendido }}
+      </div>
+      <div>
+        <strong>Pago esta completado: </strong>
+        <span
+          [ngClass]="{
+            order__isPaid: Venta.estaPago === true,
+            order__notPaid: Venta.estaPago === false
+          }"
+        >
+          {{ Venta.estaPago ? "Si" : "No" }}</span
+        >
+      </div>
+      <div>
+        <strong>Cant. Pagos pendientes: </strong>{{ Venta.pagosPendientes }}
+      </div>
+    </div>
+    <div class="totals">
+  
+
+      <div class="total-factura total_div">
+        <strong> Total: </strong>{{ Venta.total.toString() | currency }}
+      </div>
+      <div class="total_div transito">
+        <strong> Pagos en transito: </strong>{{ Venta.montosEnTransito.toString() | currency }}
+      </div>
+      <div class="total_div">
+        <strong> Pagado a la fecha: </strong
+        >{{ Venta.totalPagadoAlaFecha.toString() | currency }}
+      </div>
+      <div [ngClass]="{ order_debt: deuda > 0, order_no_debt: deuda <= 0 }">
+        <strong> Pendiente: </strong>
+        <span>{{ deuda.toString() | currency }}</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+

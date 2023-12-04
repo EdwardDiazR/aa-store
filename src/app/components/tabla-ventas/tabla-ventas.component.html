@@ -1,0 +1,69 @@
+<div style="display: flex; flex-direction: row; align-items: center; gap: 2rem">
+  <mat-form-field>
+    <mat-label>Seleccione fecha a filtrar</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      (dateChange)="filtrar($event.value)"
+      disabled
+    />
+
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <h3>
+    <strong>{{ cantidad }}</strong> VENTAS REGISTRADAS
+  </h3>
+</div>
+
+<div class="ventas-table">
+  <table *ngIf="ventas != undefined && ventas.length > 0; else noHayVentas">
+    <thead>
+      <tr>
+        <th># Fact.</th>
+        <th>Cliente</th>
+        <th>Producto</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Pagado a la fecha</th>
+        <th>Estado</th>
+        <th>Deuda</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let item of ventas"
+        [ngClass]="{
+          order__isPaid: item.estaPago === true,
+          order__isPendient: item.estaPago === false
+        }"
+        [routerLink]="['/ventas/detalle/', item.idVenta]"
+      >
+        <td>{{ item.idVenta }}</td>
+        <td>{{ item.nombreCliente }}</td>
+        <td>{{ item.nombreProductoVendido }}</td>
+        <td>{{ item.fechaDeVenta | date : "dd/MM/yyyy" }}</td>
+        <td>{{ item.total.toString() | currency : "USD" }}</td>
+        <td>{{ item.totalPagadoAlaFecha.toString() | currency : "USD" }}</td>
+        <td>{{ item.estaPago == true ? "PAGADA" : "PENDIENTE" }}</td>
+        <td>
+          {{ (item.total - item.totalPagadoAlaFecha).toString() | currency }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div>
+  
+  <ng-template #noHayVentas>
+    <h1 *ngIf="ventas && ventas.length <= 0; else loading">
+      No hay ventas en esta fecha
+    </h1>
+  </ng-template>
+
+  <ng-template #loading>
+    <h2>Cargando...</h2>
+  </ng-template>
+</div>

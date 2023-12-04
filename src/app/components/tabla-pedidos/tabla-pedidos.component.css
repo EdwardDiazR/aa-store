@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+:host {
+  --MiamiYellow: #fde53b;
+  --PendienteRed: #e1000f;
+  --RecibidoGreen: #1ca350;
+  --BlackPurple: #0f0616;
+}
+* {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+.ventas-table {
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+
+th,
+td {
+  border-bottom: 1.35px solid rgb(211, 211, 211);
+  border-top: none;
+  text-align: center;
+  border-left: none;
+  border-right: none;
+}
+
+thead > tr > th:last-child {
+  border-right: none;
+}
+
+tbody > tr:last-child > td {
+  border-bottom: none;
+}
+
+tbody > tr > td:last-child {
+  border-right: none;
+}
+
+thead > tr {
+  font-size: 13px;
+  height: 25px;
+}
+
+tbody > tr {
+  font-size: 12px;
+  box-sizing: border-box;
+  height: 40px;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+tbody > tr > td:nth-child(2) {
+  min-width: 200px;
+}
+tbody > tr:hover {
+  background-color: white;
+  color: black;
+}
+
+/* tbody >tr:nth-child(even){
+    blur
+} */
+.action-btns{
+  border-left:1px solid ;
+}
+.action-btns > button {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.recibir-btn {
+  background-color: green;
+  color: white;
+}
+
+.recibir_miami-btn {
+  background-color: yellow;
+  color: black;
+}
+
+.recibido {
+  background-color: var(--RecibidoGreen);
+  color: white;
+}
+
+.pendiente {
+  background-color: var(--PendienteRed);
+  color: white;
+}
+
+.recibido_miami {
+  background-color: var(--MiamiYellow);
+  color: black;
+}
+
+.disponibleCourrier {
+  background-color: rgb(0, 128, 0);
+  color: white;
+}
+
+.status__column {
+  max-height: 100%;
+}
+
+.status__column > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 1px;
+  box-sizing: border-box;
+  max-height: 50%;
+  margin: 2px;
+  text-overflow: ellipsis;
+}
+
+.see-status__btn{
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  background-color: #1ca350;
+  color: white;
+  transition: 0.12s ease-in-out;
+  padding: 4px;
+}
+.see-status__btn:hover{
+  background-color: white;
+  color: black;
+  
+}
+
+.update-status__btn {
+  border: none;
+  box-sizing: border-box;
+  background-color: rgb(255, 223, 45);
+  border-radius: 5px;
+  padding: 4px;
+  transition: 0.12s ease-in-out;
+}
+
+.update-status__btn:hover{
+  background-color: white;
+  color: black;
+}

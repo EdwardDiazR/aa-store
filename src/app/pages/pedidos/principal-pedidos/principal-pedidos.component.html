@@ -1,0 +1,42 @@
+<section class="container">
+  <nav>
+    <button class="nuevoPedidoBtn" [routerLink]="'/pedidos/agregar'">
+     <img src="../../../../assets/icons/white-add-icon.png"/>
+     <span>
+      Agregar pedido
+    </span>
+    </button>
+  </nav>
+
+  <div class="totales">
+    <h2>Resumen</h2>
+    <div class="resumenes-container">
+      <ul class="resumen-pedidos">
+        
+        <li>
+          Cantidad de pedidos: <strong>{{ cantidadPedidos }}</strong>
+        </li>
+        <li>
+          Cant pedidos pendientes: <strong>{{ pedidosPendientes }}</strong>
+        </li>
+        <li>
+          Cant pedidos en Miami: <strong>{{ pedidosEnMiami }}</strong>
+        </li>
+      </ul>
+
+      <ul class="resumen-monetario">
+        <li>
+          Total RD$:
+          <strong>{{ totalRD.toString() | currency : "DOP" : "RD$" }}</strong>
+        </li>
+
+        <li>
+          Total US$:
+          <strong>{{ totalUSD.toString() | currency : "USD" }}</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <app-tabla-pedidos [pedidos]="pedidos"> 
+  </app-tabla-pedidos>
+</section>

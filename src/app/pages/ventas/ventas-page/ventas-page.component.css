@@ -1,0 +1,53 @@
+:host {
+  --new-background: #13a93a;
+  --cancel-background: #e44020;
+  --edit-background: #e8d023;
+}
+
+
+
+.ventas-section__container {
+  display: flex;
+  flex-direction: row;
+
+}
+.menu-side {
+  background-color: rgb(247, 247, 247);
+  width: 17%;
+  border: 1px solid;
+  max-height: 100%;
+}
+.side-menu_list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+.side-menu_list > li {
+  margin: 10px;
+  list-style: none;
+  height: 30px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.new-order__btn {
+  background-color: var(--new-background);
+}
+.cancel-order__btn {
+  background-color: var(--cancel-background);
+}
+.edit-order__btn {
+  background-color: var(--edit-background);
+}
+
+.main-side {
+  width: 100%;
+  padding: 10px;
+}
+.ventas-section {
+  width: 100%;
+}

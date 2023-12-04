@@ -1,0 +1,51 @@
+:host{
+    --DarkPurple:#0F0616;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.container {
+  background-color: var(--DarkPurple);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+}
+
+
+.info-pedido{
+    display: flex;
+    gap: 10px;
+
+}
+
+.status-Info{
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+}
+
+.status-btns{
+    display: flex;
+    flex-flow: column;
+}
+
+.status-btns>button{
+    height: 30px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}

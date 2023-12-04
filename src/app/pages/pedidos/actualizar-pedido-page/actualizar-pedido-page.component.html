@@ -1,0 +1,42 @@
+<body>
+  <div *ngIf="InfoPedido != null" class="container">
+    <h2>Actualizar status de pedido</h2>
+    <div class="info-pedido">
+    
+      <p>
+        Pedido No.<strong>{{ InfoPedido.pedidoId }}</strong>
+      </p>
+      |
+      <p>
+        Producto:<strong>{{ InfoPedido.nombreProducto }}</strong>
+      </p>
+    </div>
+    <div class="status-Info">
+      El Status del pedido es: <strong>{{ InfoPedido.status }}</strong>
+    </div>
+
+    <div class="status-btns">
+      <h3 style="margin: 0;">A que status deseas actualizar el pedido?</h3>
+
+      <button
+        (click)="recibirEnMiami(InfoPedido.pedidoId, InfoPedido.status)"
+        class="recibir_miami-btn"
+      >
+        Recibir en Miami
+      </button>
+      <div>
+      
+      <button
+        class="recibir-btn"
+        (click)="recibirFinal(InfoPedido.pedidoId, InfoPedido.status,totalCourrier)"
+      >
+        Recibir Final
+      </button>
+      <input type="number" placeholder="Total courrier" [(ngModel)]="totalCourrier"/>
+    </div>
+      <button (click)="recibirEnCourrier(InfoPedido.pedidoId)">
+        Recibir en courrier
+      </button>
+    </div>
+  </div>
+</body>

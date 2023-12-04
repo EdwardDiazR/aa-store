@@ -1,0 +1,66 @@
+:host{
+  --Silver:#D5DDE0;
+}
+
+.container {
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+
+}
+
+.nuevoPedidoBtn {
+  background-color: green;
+  border: none;
+  height: 35px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  gap: 6px;
+}
+
+.nuevoPedidoBtn:hover{
+    background-color: rgb(188, 188, 188);
+    color: green;
+    border: 1px solid black;
+}
+
+.nuevoPedidoBtn >img{
+  min-height: 80%;
+  max-height: 100%;
+
+}
+
+.totales{
+  background-color: var(--Silver);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.totales>h2{
+  margin: 0;
+  padding: 0;
+}
+
+.resumenes-container{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.resumenes-container>ul{
+  padding: 0;
+ 
+}
+.resumenes-container >ul >li{
+ 
+  list-style: none;
+
+}
